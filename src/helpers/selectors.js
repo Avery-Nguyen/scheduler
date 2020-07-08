@@ -28,11 +28,16 @@ export function getInterview(state, interview) {
   return interviewObj;
 };
 
-// {  
-//   "student": "Lydia Miller-Jones",
-//   "interviewer": {  
-//     "id": 1,
-//     "name": "Sylvia Palmer",
-//     "avatar": "https://i.imgur.com/LpaY82x.png"
-//   }
-// }
+export function getInterviewersForDay(state, day) {
+
+  const interviewerOfThatDay = [];
+  for (const date of state.days) {
+    if (date.name === day){
+      for (const interviewer of date.interviewers) {
+        interviewerOfThatDay.push(state.interviewers[interviewer]);
+      };
+    };
+  };
+
+  return interviewerOfThatDay;
+};
