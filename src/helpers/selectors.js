@@ -13,3 +13,26 @@ export function getAppointmentsForDay(state, day) {
 };
 
 
+export function getInterview(state, interview) {
+  //appointment.interview (interview) is --> { student: 'Archie Cohen', interviewer: 2 }
+  if(!interview) {
+    return null;
+  }
+ 
+  const interviewObj = {
+    ...interview,
+    interviewer: {
+      ...state.interviewers[interview.interviewer]
+    }
+  };
+  return interviewObj;
+};
+
+// {  
+//   "student": "Lydia Miller-Jones",
+//   "interviewer": {  
+//     "id": 1,
+//     "name": "Sylvia Palmer",
+//     "avatar": "https://i.imgur.com/LpaY82x.png"
+//   }
+// }
