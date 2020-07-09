@@ -34,7 +34,7 @@ export default function Appointment(props) {
       transition(SHOW);
     })
     .catch(() => {
-      transition(ERROR_SAVE);
+      transition(ERROR_SAVE, true)
     })
     
   }
@@ -45,14 +45,14 @@ export default function Appointment(props) {
 
   function confirm(input = false){
     if(input) {
-      transition(DELETING);
-    props.cancelInterview(props.id)
-    .then(() => {
-      transition(EMPTY);
-    })
-    .catch(() => {
-      transition(ERROR_DELETE);
-    })
+      transition(DELETING, true);
+      props.cancelInterview(props.id)
+      .then(() => {
+        transition(EMPTY);
+      })
+      .catch(() => {
+        transition(ERROR_DELETE, true);
+      })
     }
   }
 
@@ -99,13 +99,13 @@ export default function Appointment(props) {
     {mode === ERROR_DELETE && (
       <Error 
       message={'could not cancel appointment'}
-      onClose={() => {transition(SHOW)}}
+      onClose={() => {back()}}
       />
     )}
     {mode === ERROR_SAVE && (
       <Error 
       message={'could not save appointment'}
-      onClose={() => {transition(EDIT)}}
+      onClose={() => {back()}}
       />
     )}
   </article>
