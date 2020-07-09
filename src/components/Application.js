@@ -51,7 +51,7 @@ export default function Application(props) {
         appointments
       });
     })
-    .catch(err => console.log(err));
+    // .catch(err => console.log(err));
   }
 
   function cancelInterview(id){
@@ -70,7 +70,7 @@ export default function Application(props) {
         appointments
       });
     })
-    .catch(err => console.log(err));
+    // .catch(err => console.log(err));
   }
 
   const appointmentElement = appointments.map(appointment => {
