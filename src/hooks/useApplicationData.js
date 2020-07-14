@@ -35,7 +35,7 @@ function reducer(state, action) {
       } else {
         spotNum = 1;
       };
-console.log(state.days);
+
       const days = state.days.map((day) => day.appointments.includes(action.id) ? {...day,spots: day.spots + spotNum} : day);
       return {...state,appointments,days};
     
