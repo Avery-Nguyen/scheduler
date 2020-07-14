@@ -40,12 +40,7 @@ export default function Appointment(props) {
   }
 
   function destroy() {
-    transition(CONFIRM);
-  }
-
-  function confirm(input = false){
-    if(input) {
-      transition(DELETING, true);
+    transition(DELETING, true);
       props.cancelInterview(props.id)
       .then(() => {
         transition(EMPTY);
@@ -53,10 +48,7 @@ export default function Appointment(props) {
       .catch(() => {
         transition(ERROR_DELETE, true);
       })
-    }
   }
-
-  
 
 
   return (
@@ -67,7 +59,7 @@ export default function Appointment(props) {
       <Show
         student={props.interview.student}
         interviewer={props.interview.interviewer}
-        onDelete={destroy}
+        onDelete={() => {transition(CONFIRM);}}
         onEdit={() => {transition(EDIT);}}
       />
     )}
@@ -84,7 +76,7 @@ export default function Appointment(props) {
       <Confirm
       message={"Are you sure you want to delete?"}
       onCancel={() => {back()}}
-      onConfirm={confirm}
+      onConfirm={destroy}
       />
     )}
     {mode === EDIT && (
