@@ -132,8 +132,8 @@ describe('Application', () => {
   })
 
   it("shows the save error when failing to save an appointment", async () => {
- 
-    const { container, debug } = render(<Application />);
+    axios.put.mockRejectedValueOnce();
+    const { container } = render(<Application />);
     await waitForElement(() => getByText(container, "Archie Cohen"));
     const appointments = getAllByTestId(container, "appointment");
     const appointment = appointments[0];;
@@ -147,16 +147,20 @@ describe('Application', () => {
     expect(getByText(appointment, "Saving")).toBeInTheDocument();
 
     // trigger error
-    axios.put.mockRejectedValueOnce();
+   
     // 7. Check for Error Message "could not save appointment"
+    await waitForElement(() => getByText(appointment, "could not save appointment"));
     // 8. click on X button
+    fireEvent.click(getByAltText(appointment, "Close"));
     // 9. Check if return back to form
+    expect(getByPlaceholderText(appointment, /enter student name/i)).toBeInTheDocument();
     // console.log("saving error",prettyDOM(appointment));
-    debug()
+    // debug()
     
   });
 
   it("shows the delete error when failing to delete an existing appointment", async () => {
+    axios.delete.mockRejectedValueOnce();
     // 1. Render the Application.
     const { container, debug } = render(<Application />);
     // 2. Wait until the text "Archie Cohen" is displayed.
@@ -174,12 +178,18 @@ describe('Application', () => {
     expect(getByText(appointment, "Deleting")).toBeInTheDocument();
 
     // 6. Trigger Error Message 
-    axios.delete.mockRejectedValueOnce();
     // 7. Check for Error Message "could not cancel appointment"
+    await waitForElement(() => getByText(appointment, "could not cancel appointment"));
     // 8. click on X button
+    fireEvent.click(getByAltText(appointment, "Close"));
     // 9. Check if original appointment is displayed and spots remained unchanged
-      // console.log("deleting error",prettyDOM(appointment));
+    expect(queryByText(appointment, "Archie Cohen")).toBeInTheDocument()
+    const day = getAllByTestId(container, "day").find(day =>
+      queryByText(day, "Monday")
+    );
 
+    expect(getByText(day, "1 spot remaining")).toBeInTheDocument();
+     
   });
 });
 
