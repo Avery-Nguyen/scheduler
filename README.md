@@ -1,5 +1,19 @@
 # Interview Scheduler
 
+## Project Overview
+Interview Scheduler is a single-page app utilizing React. Designed to help organized and keep track of interviews or appointments with a simple to use UI. 
+
+## Screenshots
+![""]()
+
+## Dependencies
+- axios
+- classnames
+- normalize.css
+- react
+- react-dom
+- react-scripts
+
 ## Setup
 
 Install dependencies with `npm install`.
@@ -21,3 +35,4 @@ npm test
 ```sh
 npm run storybook
 ```
+npm install <package> --save
