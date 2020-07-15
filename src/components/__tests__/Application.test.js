@@ -7,15 +7,6 @@ import axios from "axios";
 
 afterEach(cleanup);
 
-// it("defaults to Monday and changes the schedule when a new day is selected", () => {
-//   const { getByText } = render(<Application />);
-
-//   return waitForElement(() => getByText("Monday"))
-//   .then(()=> {
-//     fireEvent.click(getByText("Tuesday"));
-//     expect(getByText("Leopold Silvers")).toBeInTheDocument();
-//   });
-// });
 
 describe('Application', () => {
   it("changes the schedule when a new day is selected", async () => {
@@ -162,7 +153,7 @@ describe('Application', () => {
   it("shows the delete error when failing to delete an existing appointment", async () => {
     axios.delete.mockRejectedValueOnce();
     // 1. Render the Application.
-    const { container, debug } = render(<Application />);
+    const { container } = render(<Application />);
     // 2. Wait until the text "Archie Cohen" is displayed.
     await waitForElement(() => getByText(container, "Archie Cohen"));
     // 3. Click the "Delete" button on the booked appointment.

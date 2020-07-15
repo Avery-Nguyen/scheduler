@@ -8,7 +8,6 @@ export default function DayList (props) {
             key={day.id}
             name={day.name} 
             spots={day.spots} 
-            //add conditional to take the state.spots or day.spots
             selected={day.name === props.day}
             setDay={props.setDay}  />
   });

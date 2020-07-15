@@ -47,7 +47,6 @@ export default function Application(props) {
   <DayList 
   days={state.days} 
   day={state.day} 
-  //pass state.spots as prop
   setDay={setDay} />
 </nav>
 <img
@@ -57,7 +56,6 @@ export default function Application(props) {
 />
       </section>
       <section className="schedule">
-        {/* Replace this with the schedule elements durint the "The Scheduler" activity. */}
         {appointmentElement}
         <Appointment key="last" time="5pm" />
       </section>
