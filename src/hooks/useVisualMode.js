@@ -9,23 +9,23 @@ export default function useVisualMode(initial) {
     if (replace) {
       setMode(newMode);
       return { transition };
-    }
+    };
 
     setMode(newMode);
     setHistory(prev => ([...prev, newMode]));
     return { transition };
-  }
+  };
 
   function back () {
     if(history.length <= 1 ) {
       setMode(initial);
       setHistory(initial); 
       return { back };
-    }
+    };
     history.pop();
     setMode(history[history.length-1]);
     return { back };
-  }
+  };
 
   return { mode, transition, back };
 

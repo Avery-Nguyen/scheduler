@@ -28,7 +28,7 @@ export default function reducer(state, action) {
       if(action.interview) {
         if(!state.appointments[action.id].interview){
           spotNum = -1;
-        }
+        };
       } else {
         spotNum = 1;
       };

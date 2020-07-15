@@ -38,4 +38,3 @@ npm test
 ```sh
 npm run storybook
 ```
-npm install <package> --save

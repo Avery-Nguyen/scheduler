@@ -35,9 +35,9 @@ export default function Appointment(props) {
     })
     .catch(() => {
       transition(ERROR_SAVE, true)
-    })
+    });
     
-  }
+  };
 
   function destroy() {
     transition(DELETING, true);
@@ -47,8 +47,8 @@ export default function Appointment(props) {
       })
       .catch(() => {
         transition(ERROR_DELETE, true);
-      })
-  }
+      });
+  };
 
 
   return (
