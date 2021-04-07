@@ -3,7 +3,6 @@
 ## Project Overview
 Interview Scheduler is a single-page app utilizing React. Designed to help organized and keep track of interviews or appointments with a simple to use UI. 
 
-(https://happy-goldberg-c1df57.netlify.app/)
 
 ## Screenshots
 !["Main Page"](https://github.com/Avery-Nguyen/scheduler/blob/master/docs/Main-Page.png?raw=true)
