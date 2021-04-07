@@ -18,6 +18,7 @@ Interview Scheduler is a single-page app utilizing React. Designed to help organ
 - react-dom
 - react-scripts
 
+
 ## Setup
 
 Install dependencies with `npm install`.
